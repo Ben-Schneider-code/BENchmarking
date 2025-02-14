@@ -24,10 +24,26 @@ messages = [
             #     "max_pixels": 224*360,
             #     "fps": 1.0,
             # },
-            {"type": "text", "text": f"{short_story}\nGive me a two sentence summary of the short story you just read."},
+            {"type": "text", "text": f"{short_story}\nGive me a two sentence summary of this story."},
         ],
     }
 ]
+
+# Video 
+# messages = [
+#     {
+#         "role": "user",
+#         "content": [
+#             {
+#                 "type": "video",
+#                 "video": "file:///scratch/b3schnei/data/video/hamburger.mp4",
+#                 "max_pixels": 224*360,
+#                 "fps": 1.0,
+#             },
+#             {"type": "text", "text": f"Summarize this video in two sentences, please"},
+#         ],
+#     }
+# ]
 
 # Preparation for inference
 text = processor.apply_chat_template(
