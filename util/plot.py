@@ -45,3 +45,28 @@ def plot_heatmap(attn: torch.Tensor, save_path="./fig.png"):
         bbox_inches='tight'
     )
     plt.close()
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def freq_plot(arr, save_path):
+
+
+    # Compute FFT and frequencies
+    n = len(arr)
+    fft_values = np.fft.rfft(arr)  # FFT for real input
+    frequencies = np.fft.rfftfreq(n, d=1)  # d=1 corresponds to timestep of 1
+    magnitude = np.abs(fft_values)  # Magnitude of each frequency component
+
+    # Plotting
+    plt.plot(frequencies, magnitude)
+    plt.xlabel('Frequency (Hz)')
+    plt.ylabel('Magnitude')
+    plt.title('Frequency Domain Plot')
+    plt.grid(True)
+    plt.savefig(
+        save_path,
+        pad_inches=0,
+        bbox_inches='tight'
+    )
+    plt.close()
