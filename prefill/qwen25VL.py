@@ -3,6 +3,8 @@ Loading checkpoint shards: 100%|████████████████
 qwen-vl-utils using decord to read video.
 Time elapsed for video decompression: 19.405189514160156 [NOTE: This is usually much longer 30-40 seconds, if the cideo is out of disk cache]
 Time elapsed for prefill with FA2: 6.688928127288818
+This 61 minute video used for this test is:
+https://www.youtube.com/watch?v=AO2S2QZjykE
 """
 
 import os 
