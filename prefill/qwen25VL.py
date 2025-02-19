@@ -1,11 +1,14 @@
 """
-Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00,  8.45it/s]
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00,  7.11it/s]
 qwen-vl-utils using decord to read video.
-Time elapsed for video decompression: 19.405189514160156 [NOTE: This is usually much longer 30-40 seconds, if the cideo is out of disk cache]
-Time elapsed for prefill with FA2: 6.688928127288818
+Total time elapsed for video decompression: 18.429545640945435
+Processor overhead: 2.294198513031006
+Video porcessing overhead: 16.13534712791443
+Video tensor shape: torch.Size([1, 69138])
+Time elapsed for prefill with FA2: 6.546677589416504
 This 61 minute video used for this test is:
 https://www.youtube.com/watch?v=AO2S2QZjykE
-peak mmemory used is ~60 Gb on A100
+peak memory used is ~60 Gb on A100
 """
 
 import os 
@@ -23,38 +26,50 @@ processor = AutoProcessor.from_pretrained("Qwen/Qwen2.5-VL-7B-Instruct", use_fas
 video_path = "/scratch/b3schnei/data/video/60min.mp4"
 model.cuda()
 
-start = time.time()
-messages = [
-    {
-        "role": "user",
-        "content": [
-            {
-                "type": "video",
-                "video": f"file://{video_path}",
-                "max_pixels": 360 * 420,
-                "fps": 1.0,
-            },
-        ],
-    }
-]
+def load_video():
+    start = time.time()
+    messages = [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "video",
+                    "video": f"file://{video_path}",
+                    "max_pixels": 360 * 420,
+                    "fps": 1.0,
+                },
+            ],
+        }
+    ]
 
-text = processor.apply_chat_template(
-    messages, tokenize=False, add_generation_prompt=False
-)
+    text = processor.apply_chat_template(
+        messages, tokenize=False, add_generation_prompt=False
+    )
 
-image_inputs, video_inputs = process_vision_info(messages)
-inputs = processor(
-    text=[text],
-    images=image_inputs,
-    videos=video_inputs,
-    padding=True,
-    return_tensors="pt",
-)
-end = time.time()
-elapsed = end - start
-print(f"Time elapsed for video decompression: {elapsed}")
+    image_inputs, video_inputs = process_vision_info(messages)
+    proc_start = time.time()
+    inputs = processor(
+        text=[text],
+        images=image_inputs,
+        videos=video_inputs,
+        padding=True,
+        return_tensors="pt",
+    )
+    end = time.time()
+    elapsed = end - start
+    proc_elapsed = end-proc_start
+    print(f"Total time elapsed for video decompression: {elapsed}")
+    print(f"Processor overhead: {proc_elapsed}")
+    print(f"Video porcessing overhead: {elapsed-proc_elapsed}")
+    return inputs
+
+# Can run multiple time to get average time.
+# This timing is more inconsistent
+for i in range(1):
+    inputs = load_video()
 
 inputs = inputs.to("cuda")
+print(f"Video tensor shape: {inputs.data["input_ids"].shape}")
 
 start = time.time()
 with torch.no_grad():
