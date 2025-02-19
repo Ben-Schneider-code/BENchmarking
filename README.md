@@ -1,2 +1,2 @@
-# BENchmarking
-Benchmarking for model quality as well as compute characterics (speed, memory, etc.)
+# Long Video Context
+Exploring techniques for serving long video context LLMs with limited resources.
