@@ -1,0 +1,50 @@
+(abc) b3schnei@growl:~/LVC$  cd /home/b3schnei/LVC ; /usr/bin/env /scratch/b3schnei/anaconda3/envs/lvc/bin/python /home/b3schnei/.vscode-server/extensions/ms-python.debugpy-2024.12.0-linux-x64/bundled/libs/debugpy/adapter/../../debugpy/launcher 55721 -- /home/b3schnei/LVC/prefill/qwen25VL.py 
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00,  8.11it/s]
+qwen-vl-utils using decord to read video.
+Total time elapsed for video decompression: 8.697443008422852
+Video tensor shape: 54021
+Time elapsed for prefill with FA2: 5.162626266479492
+/scratch/b3schnei/anaconda3/envs/lvc/lib/python3.12/site-packages/transformers/generation/configuration_utils.py:634: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.001` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+/scratch/b3schnei/anaconda3/envs/lvc/lib/python3.12/site-packages/transformers/generation/configuration_utils.py:651: UserWarning: `do_sample` is set to `False`. However, `top_k` is set to `1` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_k`.
+  warnings.warn(
+Generation with KV cache took: 35.1034882068634
+Number of new tokens generated was: 100
+Generated Output:
+['The video begins with a serene and picturesque scene of a beach at sunset, where the sun is setting on the horizon, casting a warm golden glow over the entire landscape. The sky is painted with hues of orange, pink, and purple, creating a stunning backdrop for the tranquil ocean waves that gently lap against the shore. The water appears calm, with small ripples reflecting the vibrant colors of the sky. In the distance, a few small islands or landmasses can be seen, adding depth to']
+(abc) b3schnei@growl:~/LVC$ ^C
+
+(abc) b3schnei@growl:~/LVC$  cd /home/b3schnei/LVC ; /usr/bin/env /scratch/b3schnei/anaconda3/envs/lvc/bin/python /home/b3schnei/.vscode-server/extensions/ms-python.debugpy-2024.12.0-linux-x64/bundled/libs/debugpy/adapter/../../debugpy/launcher 37011 -- /home/b3schnei/LVC/prefill/qwen25VL.py 
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00,  8.04it/s]
+qwen-vl-utils using decord to read video.
+Total time elapsed for video decompression: 15.144755601882935
+Video tensor shape: 69141
+Time elapsed for prefill with FA2: 6.7410500049591064
+/scratch/b3schnei/anaconda3/envs/lvc/lib/python3.12/site-packages/transformers/generation/configuration_utils.py:634: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.001` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+/scratch/b3schnei/anaconda3/envs/lvc/lib/python3.12/site-packages/transformers/generation/configuration_utils.py:651: UserWarning: `do_sample` is set to `False`. However, `top_k` is set to `1` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_k`.
+  warnings.warn(
+Generation with KV cache took: 48.069684982299805
+Number of new tokens generated was: 100
+Generated Output:
+['The video showcases a serene and picturesque coastal scene, capturing the dynamic interplay between the ocean waves and the rugged shoreline. The sun casts a warm glow over the water, creating a shimmering effect on the surface, while the waves crash against the rocks, producing a rhythmic symphony of sound. The rocky beach is scattered with various sizes of stones, adding texture to the landscape. In the distance, a mountainous silhouette provides a majestic backdrop, enhancing the natural beauty of the setting. The overall']
+(abc) b3schnei@growl:~/LVC$ ^C
+
+(abc) b3schnei@growl:~/LVC$  cd /home/b3schnei/LVC ; /usr/bin/env /scratch/b3schnei/anaconda3/envs/lvc/bin/python /home/b3schnei/.vscode-server/extensions/ms-python.debugpy-2024.12.0-linux-x64/bundled/libs/debugpy/adapter/../../debugpy/launcher 44737 -- /home/b3schnei/LVC/prefill/qwen25VL.py 
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00,  8.74it/s]
+qwen-vl-utils using decord to read video.
+Total time elapsed for video decompression: 25.312414407730103
+Video tensor shape: 69141
+Time elapsed for prefill with FA2: 6.579329252243042
+/scratch/b3schnei/anaconda3/envs/lvc/lib/python3.12/site-packages/transformers/generation/configuration_utils.py:634: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.001` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+/scratch/b3schnei/anaconda3/envs/lvc/lib/python3.12/site-packages/transformers/generation/configuration_utils.py:651: UserWarning: `do_sample` is set to `False`. However, `top_k` is set to `1` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_k`.
+  warnings.warn(
+Generation with KV cache took: 48.10688233375549
+Number of new tokens generated was: 100
+Generated Output:
+["The video showcases a serene and picturesque coastal scene, capturing the dynamic interplay between the ocean waves and the rocky shoreline. The sun's rays filter through the water, creating a shimmering effect on the surface of the sea, while the gentle waves roll in, crashing against the rocks and pebbles along the shore. The overall atmosphere is tranquil and inviting, with the natural beauty of the coastline providing a sense of peace and tranquility.\n\nIn terms of the visual elements, the video highlights the contrast"]
+(abc) b3schnei@growl:~/LVC$ 

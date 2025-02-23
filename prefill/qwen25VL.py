@@ -7,6 +7,7 @@ from util.qwen_util import load_video
 import torch
 from transformers import Qwen2_5_VLForConditionalGeneration, AutoTokenizer, AutoProcessor
 import time
+
 def main():
     model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
         "Qwen/Qwen2.5-VL-7B-Instruct", torch_dtype=torch.bfloat16, attn_implementation="flash_attention_2"
@@ -21,6 +22,7 @@ def main():
 
     input_shape = inputs.data["input_ids"].shape[1]
     print(f"Video tensor shape: {input_shape}")
+
     keys = prefill(model=model, inputs=inputs, timer=True)
 
     # add prefill keys
